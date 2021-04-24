@@ -17,13 +17,80 @@ const connection = mysql.createConnection({
 
 //* This is our basic connection to MySQL and output 
 function sqlTest() {
-    connection.query(`SELECT * FROM DEPARTMENT;`, function(err, res) {
+    connection.query(`SELECT * FROM DEPARTMENT, ROLE_, EMPLOYEE;`, function(err, res) {
         if (err) throw err;
         console.table(res);
         //promptUser();
     });
   }
 
-  sqlTest();
   
+//* Start building with Inquirer   
+const runApp = () => {
+    inquirer
+      .prompt({
+        name: 'action',
+        type: 'rawlist',
+        message: 'What would you like to do?',
+        choices: [
+          'View all employees',
+          'Thing 1',
+          'Thing 2',
+          'Thing 3',
+          'Thing 4',
+          'Thing 5',
+        ],
+      })
+      .then((answer) => {
+        switch (answer.action) {
+          case 'View all employees':
+            viewAll();
+            break;
   
+          case 'Thing 1':
+            //thing1();
+            foobar();
+            break;
+  
+          case 'Thing 2':
+            //thing2();
+            foobar();
+            break;
+  
+          case 'Thing 3':
+            //thing3();
+            foobar();
+            break;
+  
+          case 'Thing 4':
+            //thing4();
+            foobar();
+            break;
+
+            case 'Thing 5':
+            //thing5();
+            foobar();
+            break;
+  
+          default:
+            console.log(`Invalid action: ${answer.action}`);
+            break;
+        }
+      });
+  };
+
+//* View All Employees
+const viewAll = () => {
+    console.log("view all");
+    connection.query(`SELECT * FROM DEPARTMENT, ROLE_, EMPLOYEE;`, function(err, res) {
+        if (err) throw err;
+        console.table(res);
+    });
+}
+//Test function 
+function foobar(){
+    console.log("foobar");
+}
+
+//* Run the whole enchilada 
+runApp();
