@@ -2,28 +2,32 @@ DROP DATABASE IF EXISTS fun_corpDB;
 CREATE database fun_corpDB;
 ​
 USE fun_corpDB;
-​
-CREATE TABLE department (
-  id INT NOT NULL,
-  dept_name VARCHAR(30), /* to hold department name */
-  PRIMARY KEY (id)
+
+-- CREATE TABLE DEPARTMENT
+CREATE TABLE DEPARTMENT(
+   ID INTEGER(11) AUTO_INCREMENT NOT NULL,
+   DEPTNAME VARCHAR(100),
+   PRIMARY KEY (ID)
 );
 ​
-CREATE TABLE role_ (
-  id INT NOT NULL,
-  title VARCHAR(30), /* to hold role title */
-  salary DECIMAL(10,4) NULL, /* to hold role salary */
-  department_id INT NOT NULL, /* to hold reference to department the role belongs to */
-  PRIMARY KEY (id)
+CREATE TABLE ROLE_ (
+  ID INTEGER(11) AUTO_INCREMENT NOT NULL,
+  TITLE VARCHAR(30), 
+  SALARY DECIMAL(10,4) NULL, 
+  DEPTID INTEGER(11) NULL, 
+  FOREIGN KEY (DEPTID) REFERENCES DEPARTMENT(ID), 
+  PRIMARY KEY (ID)
 );
 
-CREATE TABLE employee (
-  id INT NOT NULL,
-  first_name VARCHAR(30),
-  last_name VARCHAR(30),
-  role_id INT NOT NULL, /* to hold reference to role employee has */
-  manager_id INT NULL, /* to hold reference to another employee that manages the employee being Created. This field may be null if the employee has no manager */
-  PRIMARY KEY (id)
+CREATE TABLE EMPLOYEE (
+  ID INTEGER(11) AUTO_INCREMENT NOT NULL,
+  FIRSTNAME VARCHAR(30),
+  LASTNAME VARCHAR(30),
+  ROLEID INTEGER(11) NULL, 
+  MANAGERID INTEGER(11) NULL, 
+  FOREIGN KEY (ROLEID) REFERENCES ROLE_(ID),
+  FOREIGN KEY (MANAGERID) REFERENCES EMPLOYEE(ID),
+  PRIMARY KEY (ID)
 );
 ​
-SELECT * FROM fun_corpDB;
+
