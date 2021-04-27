@@ -1,34 +1,37 @@
-DROP DATABASE IF EXISTS DM_DB;
+DROP DATABASE IF EXISTS dmDB;
 
-CREATE DATABASE DM_DB;
+CREATE DATABASE dmDB;
 
-USE DM_DB;
+USE dmDB;
 
 CREATE TABLE depts (
-    dept_ID INT(6) NOT NULL AUTO_INCREMENT,
-    dept_name VARCHAR(30) NOT NULL,
-    PRIMARY KEY (dept_ID)
+    id INT(10) NOT NULL AUTO_INCREMENT,
+    dept_id INT(10) NULL,
+    dept_name VARCHAR(30) NULL,
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE roles (
-    role_ID INT(6) NOT NULL AUTO_INCREMENT,
-    title VARCHAR(30) NOT NULL,
-    salary DECIMAL(8, 2) NOT NULL,
-    dept_ID INT(6) NOT NULL,
-    PRIMARY KEY (role_ID),
-    FOREIGN KEY (dept_ID) REFERENCES depts(dept_ID)
+    id INT(10) NOT NULL AUTO_INCREMENT,
+    role_id INT(10) NULL,
+    title VARCHAR(30) NULL,
+    salary DECIMAL(8, 2) NULL,
+    dept VARCHAR(30) NULL,
+    PRIMARY KEY (id)
 );
 
 
 CREATE TABLE employees (
-    employee_ID INT(6) NOT NULL AUTO_INCREMENT,
+    id INT(10) NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(30),
     last_name VARCHAR(30),
-    role_ID INT(6) NOT NULL,
-    manager_ID INT(6),
-    PRIMARY KEY (employee_ID),
-    FOREIGN KEY (role_ID) REFERENCES roles(role_ID),
-    FOREIGN KEY (manager_ID) REFERENCES roles(role_ID)
+    /*employee_id INT(10) NULL,*/
+    role_id INT(10) NULL,
+    role_title VARCHAR(30) NULL,
+    dept VARCHAR(30) NULL,
+    /*manager_id INT(10) NULL,*/
+    manager_name VARCHAR(30) NULL,
+    PRIMARY KEY (id)
 );
 
 
