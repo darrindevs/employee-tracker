@@ -4,9 +4,10 @@
 
 This command line app demonstrates the use of MySQL to Create, Read, Update and Delete a database of company employees. 
 
-![Employee Tracker](https://zno.s3-us-west-1.amazonaws.com/emplyee-tracker.gif)
+![](https://zno.s3-us-west-1.amazonaws.com/emplyee-tracker.gif)
 
-![Check out the video](https://vimeo.com/541961752)
+[Check out the video!](https://vimeo.com/541961752)
+
 
 ## Technologies Used
 
