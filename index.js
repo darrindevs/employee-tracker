@@ -1,7 +1,8 @@
 // dependencies 
-const mysql = require('mysql');
-const inquirer = require('inquirer');
-const cTable = require('console.table');
+const mysql = require('mysql');// add db
+const inquirer = require('inquirer');//add Inquirer prompts
+const cTable = require('console.table');//add some formatting to console log
+const chalk = require('chalk');// add some color to console log
 
 // create the connection information for the sql database
 const connection = mysql.createConnection({
@@ -39,6 +40,7 @@ const runApp = () => {
           'Add an employee',
           'Add a new department',
           'Remove a department',
+          'Exit',
         ],
       })
       .then((answer) => {
@@ -70,6 +72,12 @@ const runApp = () => {
             case 'Remove a department':
             //thing5();
             deleteDept();
+            break;
+
+            case 'Exit':
+            //thing5();
+            //deleteDept();
+            console.log(chalk.black.bgGreen.bold("Goodbye!"));
             break;
   
           default:
