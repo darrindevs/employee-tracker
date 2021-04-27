@@ -82,7 +82,7 @@ const runApp = () => {
 //* View All Employees
 const viewAll = () => {
     console.log("view all employees");
-    connection.query(`SELECT * FROM employees;`, function(err, res) {
+    connection.query(`SELECT id, first_name, last_name, role_title, dept FROM employees;`, function(err, res) {
         if (err) throw err;
         // wait 3 seconds and then prompt user again
         setTimeout(runApp, 3000); 
@@ -93,7 +93,7 @@ const viewAll = () => {
 //* View All Roles
 const viewRoles = () => {
   console.log("view all roles");
-  connection.query(`SELECT * FROM roles;`, function(err, res) {
+  connection.query(`SELECT role_id, title, salary, dept FROM roles;`, function(err, res) {
       if (err) throw err;
       // wait 3 seconds and then prompt user again
       setTimeout(runApp, 3000); 
@@ -205,10 +205,7 @@ function deleteDept () {
       });
   });
 };
-//Test function 
-function foobar(){
-    console.log("foobar");
-}
 
-//* Run the whole enchilada 
+
+//* Run the app
 runApp();
